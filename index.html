@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Simple Website</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://en.wikipedia.org/w/api.php?action=parse&page=Artificial_intelligence&prop=text&format=json&callback=loadAboutAI"></script>
 </head>
+
 <body>
   <header>
     <h1>Welcome to My Simple Website about AI tools</h1>
@@ -14,9 +17,8 @@
   </header>
 
   <main>
-    <section>
-      <h2>About Me</h2>
-      <p>This is a simple website created by Arnab using HTML and CSS. It has a clean, minimalist design focused on content.</p>
+    <section id="about-ai">
+      <h2>About AI</h2>
     </section>
     <section>
       <h2>Featured AI Tools</h2>
@@ -140,5 +142,12 @@
   <footer>
     <p>&copy; 2024 Arnab Bhattacharyya. All rights reserved.</p>
   </footer>
+    <script>
+    function loadAboutAI(data) {
+      const content = data.parse.text['*'];
+      const aboutAISection = document.getElementById('about-ai');
+      aboutAISection.innerHTML = content;
+    }
+  </script>
 </body>
 </html>
